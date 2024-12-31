@@ -1,7 +1,7 @@
 import React from "react";
 import RenderTip from "../RenderTip";
 
-const TodFilter = (props) => {
+const TodoFilter = (props) => {
   const { onFilterChange, filterType } = props;
   return(
     <section data-name="TodFilter" className="style-2">
@@ -30,4 +30,4 @@ const TodFilter = (props) => {
     </section>
   );
 };
-export default React.memo(TodFilter);
+export default React.memo(TodoFilter);

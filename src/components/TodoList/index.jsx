@@ -3,6 +3,8 @@ import RenderTip from "../RenderTip";
 import TodoFilter from "../TodoFilter";
 import TodoForm from "../TodoForm";
 import TodoItem from "../TodoItem";
+import { fetchTodo, addTodo, toggleTodo, deleteTodo } from "../../services/api";
+
 
 
 const TodoList = () => {
@@ -12,6 +14,11 @@ const TodoList = () => {
 
   useEffect(() => {
     setLoading(true);
+    fetchTodo()
+    .then((data) => setList(data))
+    .finally(() => {
+      setLoading(false);
+    });
   }, []);
 
   const atAddItem = useCallback((text) => {
@@ -50,7 +57,7 @@ const TodoList = () => {
         return !todo.done;
       }
       return true;
-    })
+    });
   }, [list, filterType]);
 
   return (
@@ -60,7 +67,7 @@ const TodoList = () => {
       <TodoForm onAddItem={atAddItem}/>
       <TodoFilter filterType={filterType} onFilterChange={setFilterType}/>
       <div className="my-3">
-        {filtersList.map((item) => {
+        {filtersList.map((item) => (
           <TodoItem
             key={item.id}
             id={item.id}
@@ -69,7 +76,7 @@ const TodoList = () => {
             onToggleItem={atToggleItem}
             onDeleteItem={atDeleteItem}
           />
-        })}
+        ))}
       </div>
     </section>
   )

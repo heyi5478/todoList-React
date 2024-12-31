@@ -12,6 +12,10 @@ export default defineConfig({
   plugins: [react(), splitVendorChunkPlugin()],
   server: {
     port: 3000,
+    // 用 vite 原生提供的代打功能，解決本機開發時 cors 問題
+    proxy: {
+      "/api": "https://milkmidi.vercel.app/",
+    },
   },
   resolve: {
     alias: {

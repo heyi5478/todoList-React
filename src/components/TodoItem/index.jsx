@@ -1,5 +1,6 @@
 import React from "react";
 import RenderTip from "../RenderTip";
+import style from "./TodoItem.module.scss";
 
 const TodoItem = (props) => {
   const { id, text, done, onToggleItem } = props;
