@@ -1,6 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
-const apiURL = "/api/todolist/heyi";
+const apiURL = import.meta.env.VITE_API_URL;
+// console.log(import.meta.env.VITE_API_URL);
 
 export const fetchTodo = () => {
   return axios(apiURL).then(({ data }) => data);
@@ -9,7 +10,7 @@ export const fetchTodo = () => {
 export const addTodo = (text) => {
   return axios
     .post(apiURL, {
-      method: "POST",
+      method: 'POST',
       data: { text },
     })
     .then(({ data }) => data);
@@ -17,7 +18,7 @@ export const addTodo = (text) => {
 
 export const toggleTodo = (id) => {
   return axios({
-    method: "PUT",
+    method: 'PUT',
     url: apiURL,
     data: { id },
   }).then(({ data }) => data);
@@ -25,7 +26,7 @@ export const toggleTodo = (id) => {
 
 export const deleteTodo = (id) => {
   return axios({
-    method: "DELETE",
+    method: 'DELETE',
     url: apiURL,
     data: { id },
   }).then(({ data }) => data);
