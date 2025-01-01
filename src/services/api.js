@@ -8,12 +8,10 @@ export const fetchTodo = () => {
 };
 
 export const addTodo = (text) => {
-  return axios
-    .post(apiURL, {
-      method: 'POST',
-      data: { text },
-    })
-    .then(({ data }) => data);
+  return axios(apiURL, {
+    method: 'POST',
+    data: { text },
+  }).then(({ data }) => data);
 };
 
 export const toggleTodo = (id) => {
