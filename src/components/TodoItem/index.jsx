@@ -3,7 +3,7 @@ import RenderTip from "../RenderTip";
 import style from "./TodoItem.module.scss";
 
 const TodoItem = (props) => {
-  const { id, text, done, onToggleItem } = props;
+  const { id, text, done, onToggleItem, onDeleteItem } = props;
 
   const atClick = () => {
     onToggleItem(id);
@@ -15,7 +15,14 @@ const TodoItem = (props) => {
       <div data-active={done} className={style.todoItem} onClick={atClick}>
         {text}
       </div>
-      <button className="button">Detele</button>
+      <button 
+      className="button" 
+      onClick={() => {
+        onDeleteItem?.(id);
+      }}
+      >
+        Detele
+      </button>
     </section>
   );
 };
