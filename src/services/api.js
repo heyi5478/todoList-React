@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const apiURL = import.meta.env.VITE_API_URL;
-console.log(import.meta.env.VITE_API_URL);
+const URL = import.meta.env.VITE_API_URL;
+const Path = import.meta.env.VITE_API_PATH;
+const apiURL = `${URL}api/${Path}`;
+console.log(apiURL);
 
 export const fetchTodo = () => {
   return axios(apiURL).then(({ data }) => data);
