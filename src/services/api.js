@@ -14,6 +14,7 @@ export const addTodo = (text) => {
   }).then(({ data }) => data);
 };
 
+// put -> 更新
 export const toggleTodo = (id) => {
   return axios({
     method: 'PUT',
